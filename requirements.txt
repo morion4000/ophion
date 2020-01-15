@@ -2,7 +2,7 @@ Django==1.6
 South==0.8.3
 django-registration==1.0
 django-debug-toolbar==1.0
-requests==2.2.0
+requests==2.20.0
 tmdbsimple==0.3.0
 psycopg2==2.5.2
 gunicorn==18.0
