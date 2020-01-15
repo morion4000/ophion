@@ -1,0 +1,22 @@
+<form method="post" action="{% url 'lists.views.add_movie' %}" id="lists_add_movie_{{ movie.tmdb }}">
+    {% csrf_token %}
+    <input type="hidden" name="list_id" id="list_id" />
+    <input type="hidden" name="tmdb_id" id="tmdb_id" value="{{ movie.tmdb }}" />
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-plus-sign"></span> <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">Standard lists</li>
+            <li><a href="javascript:add_movie_to_list('{{ user.person.favorite_list.id }}', '{{ movie.tmdb }}')"><span class="glyphicon glyphicon-heart"></span> Add to Favorites</a></li>
+            <li><a href="javascript:add_movie_to_list('{{ user.person.seen_list.id }}', '{{ movie.tmdb }}')"><span class="glyphicon glyphicon-check"></span> Add to Seen</a></li>
+            <li><a href="javascript:add_movie_to_list('{{ user.person.must_see_list.id }}', '{{ movie.tmdb }}')"><span class="glyphicon glyphicon-unchecked"></span> Add to Must-See</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-header">Custom lists</li>
+            {% for list in user.person.custom_lists %}
+                <li><a href="javascript:add_movie_to_list('{{ list.id }}', '{{ movie.tmdb }}')">{{ list.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</form>

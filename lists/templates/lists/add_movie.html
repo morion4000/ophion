@@ -1,0 +1,23 @@
+<form method="post" action="{% url 'lists.views.add_movie' %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <div class="input-group">
+            <input type="text" class="form-control typeahead" id="movie" placeholder="Type the movie name" />
+            <input type="hidden" name="list_id" value="{{list.id}}" />
+            <input type="hidden" name="tmdb_id" />
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
+            </span>
+        </div>
+    </div>
+
+    <div class="thumbnail" id="selected_movie" style="display:none;">
+        <div class="caption">
+            <p>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Add movie to this list</button>
+            </p>
+            <h4><span id="selected_movie_title"></span> <small>(<span id="selected_movie_year"></span>)</small></h4>
+        </div>
+        <img src="" id="selected_movie_image" />
+    </div>
+</form>

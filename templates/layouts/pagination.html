@@ -1,0 +1,25 @@
+<ul class="pagination">
+	{% if objects.has_previous %}
+		<li>
+			<a href="?page={{ objects.previous_page_number }}">&laquo;</a>
+		</li>
+	{% else %}
+		<li class="disabled">
+			<a href="#">&laquo;</a>
+		</li>
+	{% endif %}
+
+	<li class="active">
+		<a href="#">{{ objects.number }} of {{ objects.paginator.num_pages }}</a>
+	</li>
+
+  	{% if objects.has_next %}
+  		<li>
+  			<a href="?page={{ objects.next_page_number }}">&raquo;</a>
+  		</li>
+  	{% else %}
+ 		<li class="disabled">
+			<a href="#">&raquo;</a>
+		</li>
+  	{% endif %}
+</ul>

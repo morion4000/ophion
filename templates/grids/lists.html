@@ -1,0 +1,10 @@
+<div class="row">
+    {% for list in lists %}
+        <div class="col-xs-6 col-md-2" style="height:200px;">
+            <h4>
+                <a href="{% url 'lists.views.detail' list.id %}">{{ list.name }}</a>
+                <small>created by <a href="{% url 'people.views.detail' list.user.id %}">{{ list.user.username }}</a></small>
+            </h4>
+        </div>
+    {% endfor %}
+</div>

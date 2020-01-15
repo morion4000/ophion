@@ -1,0 +1,14 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Username</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for person in people %}
+            <tr>
+                <td>{{ person.username }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

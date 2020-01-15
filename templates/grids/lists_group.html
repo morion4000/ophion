@@ -1,0 +1,7 @@
+<div class="list-group">
+    {% for list in lists %}
+        <a href="{% url 'lists.views.detail' list.id %}" class="list-group-item">
+            {{ list.name }} <span class="pull-right"><small>{{ list.movies.all|length }} movies</small></span>
+        </a>
+    {% endfor %}
+</div>

@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>User</th>
+            <th>Description</th>
+            <th>Latests Movies</th>
+            <th>Total Movies</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for list in lists %}
+            <tr>
+                <td><a href="{% url 'lists.views.detail' list.id %}">{{ list.name }}</a></td>
+                <td><a href="{% url 'people.views.detail' list.user.id %}">{{ list.user.username }}</a></td>
+                <td>{{ list.description }}</td>
+                <td>
+                    {% for movie in list.movies.all|slice:":10" %}
+                        <a href="{% url 'movies.views.detail' movie.id %}">{{ movie.name }}</a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ list.movies.all|length }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

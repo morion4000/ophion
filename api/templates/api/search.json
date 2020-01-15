@@ -1,0 +1,21 @@
+[
+{% for result in results %}
+    {
+        "id": "{{ result.id }}",
+        "value": "{{ result.title|safe }}",
+        "year": "{{ result.release_date|slice:'0:4' }}",
+        "poster": "http://image.tmdb.org/t/p/w500{{ result.poster_path }}",
+        "tokens": [
+            {% for token in result.tokens %}
+                "{{ token }}"
+                {% if not forloop.last %}
+                ,
+                {% endif %}
+            {% endfor %}
+        ]
+    }
+    {% if not forloop.last%}
+    ,
+    {% endif %}
+{% endfor %}
+]

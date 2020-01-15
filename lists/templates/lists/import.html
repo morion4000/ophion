@@ -1,0 +1,10 @@
+<form method="post" action="{% url 'lists.views.import_list' list_id %}" class="form-signin" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div class="form-group">
+		<label for="csv_file">CSV File</label>
+		<input type="file" id="csv_file" name="csv_file" />
+		<p class="help-block">File that was exported from the IMDb site.</p>
+	</div>
+
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Import</button>
+</form>

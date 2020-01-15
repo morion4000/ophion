@@ -1,0 +1,11 @@
+{% extends "__l_left_sidebar.html" %}
+
+{% block title %}{{ list.name }} by {{ list.user.username }}{% endblock %}
+
+{% block side_col %}
+    {% include "_lists_sidebar.html" %}
+{% endblock %}
+
+{% block main_col %}
+    {% include "_lists_detail.html" %}
+{% endblock %}

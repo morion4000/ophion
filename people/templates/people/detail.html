@@ -1,0 +1,36 @@
+<h4>
+    Favorite <small>{{ favorite_list.movies.all|length }} movies</small>
+    <span class="pull-right"><small><a href="{% url 'lists.views.detail' favorite_list.id %}">See all &raquo;</a></small></span>
+</h4>
+
+{% if favorite_list.movies.all %}
+    {% include "grids/movies_thumbnail.html" with movies=favorite_list.movies.all|slice:":6" %}
+{% else %}
+    <p>The user did not added any movies to this list yet.</p>
+{% endif %}
+
+<hr />
+
+<h4>
+    Seen <small>{{ seen_list.movies.all|length }} movies</small>
+    <span class="pull-right"><small><a href="{% url 'lists.views.detail' seen_list.id %}">See all &raquo;</a></small></span>
+</h4>
+
+{% if seen_list.movies.all %}
+    {% include "grids/movies_thumbnail.html" with movies=seen_list.movies.all|slice:":6" %}
+{% else %}
+    <p>The user did not added any movies to this list yet.</p>
+{% endif %}
+
+<hr />
+
+<h4>
+    Must-See <small>{{ must_see_list.movies.all|length }} movies</small>
+    <span class="pull-right"><small><a href="{% url 'lists.views.detail' must_see_list.id %}">See all &raquo;</a></small></span>
+</h4>
+
+{% if must_see_list.movies.all %}
+    {% include "grids/movies_thumbnail.html" with movies=must_see_list.movies.all|slice:":6" %}
+{% else %}
+    <p>The user did not added any movies to this list yet.</p>
+{% endif %}

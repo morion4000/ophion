@@ -1,0 +1,24 @@
+{% extends "__l_single_col.html" %}
+
+{% block title %}Hello world{% endblock %}
+
+{% block main_col %}
+    {% if form.errors %}
+        <div class="panel panel-danger">
+            <div class="panel-heading">Unable to register</div>
+            <div class="panel-body">
+                Unable to register...
+            </div>
+        </div>
+    {% endif %}
+
+    <form method="post" action="" class="form-signin">
+        {% csrf_token %}
+        <h2 class="form-signin-heading">Register</h2>
+        <input name="username" type="text" class="form-control" placeholder="Username" required autofocus>
+        <input name="email" type="text" class="form-control" placeholder="Email" required>
+        <input name="password1" type="password" class="form-control" placeholder="Password" required>
+        <input name="password2" type="password" class="form-control" placeholder="Confirm Password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    </form>
+{% endblock %}

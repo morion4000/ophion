@@ -1,0 +1,28 @@
+<h3>
+    {{ list.name }}
+
+    <div class="pull-right">
+        <form method="post" action="{% url 'lists.views.detail' list.id %}">
+            {% csrf_token %}
+            {% include "layouts/switch_layout.html" with layout=request.session.layout_lists_detail|first %}
+        </form>
+    </div>
+</h3>
+<p class="text-muted">Author: <a href="{% url 'people.views.detail' list.user.id %}">{{ list.user.username }}</a></p>
+<p class="text-muted">Description: {{ list.description }}</p>
+
+<hr />
+
+{% if list_movies %}
+	<center>
+		{% include 'layouts/pagination.html' with objects=list_movies %}
+	</center>
+
+    {% include request.session.layout_lists_detail|last with movies=list_movies %}
+
+	<center>
+		{% include 'layouts/pagination.html' with objects=list_movies %}
+	</center>
+{% else %}
+    <p>No movies are currently in the list.</p>
+{% endif %}

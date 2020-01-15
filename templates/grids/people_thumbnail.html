@@ -1,0 +1,14 @@
+<div class="row">
+    {% for person in people %}
+        <div class="col-xs-6 col-md-2">
+            <div class="thumbnail grid">
+                <a href="{% url 'people.views.detail' person.id %}">
+                    <img src="{{ person.person.avatar|default:'/media/no_avatar.png' }}" />
+                </a>
+                <div class="caption">
+                    <h5><a href="{% url 'people.views.detail' person.id %}">{{ person.username }}</a></h5>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

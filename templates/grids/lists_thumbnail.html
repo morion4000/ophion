@@ -1,0 +1,23 @@
+<div class="row">
+    {% for list in lists %}
+        <div class="col-xs-6 col-md-2">
+            <div class="thumbnail grid">
+                <a href="{% url 'lists.views.detail' list.id %}">
+                    <img src="{{ list.thumbnail|default:'/media/no_movies.png' }}" />
+                </a>
+                <div class="caption">
+                    <div>
+                        <h5>
+                            <a href="{% url 'lists.views.detail' list.id %}">{{ list.name }}</a>
+                        </h5>
+                    </div>
+                    <p class="text-muted">
+                        <small>{{ list.movies.all|length }} movies</small>
+                        <br />
+                        <a href="{% url 'people.views.detail' list.user.id %}">{{ list.user.username }}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

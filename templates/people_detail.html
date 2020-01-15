@@ -1,0 +1,11 @@
+{% extends "__l_left_sidebar.html" %}
+
+{% block title %}{{ person.username }}'s Profile{% endblock %}
+
+{% block side_col %}
+    {% include "_people_sidebar.html" %}
+{% endblock %}
+
+{% block main_col %}
+    {% include "_people_detail.html" %}
+{% endblock %}

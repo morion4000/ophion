@@ -1,0 +1,23 @@
+<div class="jumbotron">
+    <h1>Welcome {{ user.username }}!</h1>
+
+    <p>Build lists with your favorite movies and share them with your friends.</p>
+
+    <p>
+        <a class="btn btn-lg btn-primary" href="{% url 'lists.views.add' %}" role="button">Create a new list &raquo;</a>
+    </p>
+</div>
+
+<h4>
+    <span class="lead">My lists</span> <small>{{ my_lists|length }} lists</small> 
+    <span class="pull-right">
+        <small><a href="{% url 'people.views.detail' user.id %}">See all &raquo;</a></small>
+    </span>
+</h4>
+<hr />
+
+{% if my_lists %}
+    {% include "grids/lists_thumbnail.html" with lists=my_lists|slice:":6" %}
+{% else %}
+    <p>You haven't added any lists yet</p>
+{% endif %}

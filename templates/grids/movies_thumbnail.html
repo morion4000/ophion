@@ -1,0 +1,24 @@
+<div class="row">
+    {% for movie in movies %}
+        <div class="col-xs-6 col-md-2" >
+            <div class="thumbnail grid">
+                <div style="position:relative;">
+                    <a href="{% url 'movies.views.detail' movie.id %}">
+                        <img src="{{ movie.medium_thumbnail|default:'/media/no_poster.png' }}" />
+                    </a>
+                    <span style="position:absolute;bottom:5px;right:5px;">{% include "layouts/add_button.html" with movie=movie %}</span>
+                </div>
+                <div class="caption">
+                    <div>
+                        <h5>
+                            <a href="{% url 'movies.views.detail' movie.id %}">{{ movie.name }}</a>
+                        </h5>
+                    </div>
+                    <p>
+                        <span class="text-muted"><small>Year: {{ movie.release_date|slice:'0:4' }}</small></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

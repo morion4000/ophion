@@ -1,0 +1,29 @@
+{% if list.user == user %}
+    <h5>Add movie</h5>
+    {% include 'lists/add_movie.html' %}
+{% endif %}
+
+<hr />
+
+<h5>Other lists created by the user</h5>
+{% include "grids/lists_group.html" with lists=other_lists %}
+
+{% if list.user == user %}
+	<hr />
+
+	<h5>List options</h5>
+
+	{% if list.type == list.CUSTOM %}
+		{% if not list.privacy %}
+			<a href="{% url 'lists.views.change_privacy' 'private' list.id %}" class="btn btn-info btn-block">Make Private</a>
+		{% else %}
+			<a href="{% url 'lists.views.change_privacy' 'public' list.id %}" class="btn btn-success btn-block">Make Public</a>
+		{% endif %}
+
+		<a href="{% url 'lists.views.delete' list.id %}" class="btn btn-danger btn-block">Delete</a>
+	{% endif %}
+
+	<hr />
+
+	<a href="{% url 'lists.views.import_list' list.id %}" class="btn btn-warning btn-block">Import</a>
+{% endif %}

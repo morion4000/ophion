@@ -1,0 +1,7 @@
+<div class="row">
+    {% for person in people %}
+        <div class="col-xs-6 col-md-2">
+            <h4><a href="{% url 'people.views.detail' person.id %}">{{ person.username }}</a></h4>
+        </div>
+    {% endfor %}
+</div>

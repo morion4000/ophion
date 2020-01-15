@@ -1,0 +1,17 @@
+<h3>{{ person.username }} <small>{{ person.first_name }} {{ person.last_name }}</small></h3>
+
+<p><img src="{{ person.person.avatar|default:'/media/no_avatar.png' }}" width="100%" class="img-rounded" /></p>
+<p>Member since: -</p>
+<p>Location: {{ person.person.location }}</p>
+<p>Bio: <br />{{ person.person.bio }}</p>
+<p>Web: {{ person.person.web }}</p>
+
+<hr />
+
+<h4>Public <small>{{ public_lists|length }} lists</small></h4>
+
+{% if public_lists %}
+    {% include "grids/lists_group.html" with lists=public_lists %}
+{% else %}
+    <p>The user does not have any public lists yet.</p>
+{% endif %}

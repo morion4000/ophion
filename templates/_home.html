@@ -1,0 +1,5 @@
+{% if user.username %}
+    {% include "home/dashboard.html" %}
+{% else %}
+    {% include "home/index.html" %}
+{% endif %}

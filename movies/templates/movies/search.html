@@ -1,0 +1,5 @@
+{% if results %}
+    {% include 'grids/movies_table.html' with movies=results %}
+{% else %}
+    <p>No movies were found in the database.</p>
+{% endif %}
